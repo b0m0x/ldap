@@ -89,6 +89,10 @@ func NewConn(conn net.Conn) *Conn {
 	}
 }
 
+func (l* Conn) IsOpen() bool {
+	return !l.isClosing
+}
+
 func (l *Conn) start() {
 	go l.reader()
 	go l.processMessages()
