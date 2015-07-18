@@ -19,12 +19,13 @@ import (
 )
 
 type DeleteRequest struct {
-	dn         string
+	dn string
 }
 
 func (d DeleteRequest) encode() *ber.Packet {
-	request := ber.Encode(ber.ClassApplication, ber.TypeConstructed, ApplicationDelRequest, nil, "Delete Request")
-	request.AppendChild(ber.NewString(ber.ClassUniversal, ber.TypePrimitive, ber.TagOctetString, d.dn, "DN"))
+	//request := ber.Encode(ber.ClassApplication, ber.TypePrimitive, ApplicationDelRequest, nil, "Del Request")
+	//request.AppendChild(ber.NewString(ber.ClassUniversal, ber.TypePrimitive, ber.TagOctetString, d.dn, "DN"))
+	request := ber.NewString(ber.ClassApplication, ber.TypePrimitive, ApplicationDelRequest, d.dn, "Del Request")
 	return request
 }
 
